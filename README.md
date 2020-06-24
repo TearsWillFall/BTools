@@ -58,8 +58,6 @@ Additional dependencies may be needed to succesfully install `devtools` package 
   
   
   
-  
-  
 ## 3. Installation Instructions
 
 In order to install `BTools` package we will be using R `devtools`:
