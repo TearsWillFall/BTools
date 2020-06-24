@@ -89,11 +89,13 @@ If no arguments are provided this function will install all the tools available.
 **Example**
 
 In this example only the tools `FastQC` and `fastx_toolkit` will be installed.
-```BTools::install_tools(whitelist=c("FastQC","fastx_toolkit"))
+```
+BTools::install_tools(whitelist=c("FastQC","fastx_toolkit"))
 ```
 
 In this example all the tools found in the Description section will be installed except `bedtools`,`bwa` and `ichorCNA`.
-```BTools::install_tools(blacklist=c("bedtools","bwa","ichorCNA"))
+```
+BTools::install_tools(blacklist=c("bedtools","bwa","ichorCNA"))
 ```
 
 
