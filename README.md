@@ -25,22 +25,23 @@ Tested on fresh Ubuntu and Arch Linux installations. Should be working on other 
 In order to be able to download and compile the source files of all the required tools the following programs are required:
 * make
 * gcc
-* ant **Only required if installing FastQC*
+* ant **Only required if installing FastQC**
 * cmake
 * autoconf
+* libtool **Only requiref if installing fastx_toolkit/libgtextutils**
 
 These tools can and should be installed using the terminal with the following commands:
 
 * **For Ubuntu:**
 
   ```
-  sudo apt install make gcc ant cmake autoconf
+  sudo apt install make gcc ant cmake autoconf libtool
   ```
 
 * **For Arch Linux:**
 
   ```
-  sudo pacman -S ant make cmake gcc autoconf
+  sudo pacman -S ant make cmake gcc autoconf libtool
   ```
   
 Additional dependencies may be needed to succesfully install `devtools` package in R:
