@@ -1,0 +1,15 @@
+Package: BTools
+Title: This package helps to install a variety of Bioinformatics in Unix systems
+Version: 0.0.0.1000
+Authors@R:
+    person(given = "Osvaldas",
+           family = "Vainauskas",
+           role = c("aut", "cre"),
+           email = "osvaldas.v@um.es")
+Description: This package installs a variety of commonly used Bioinformatics tools
+    from their source files
+License: GPL-3 + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.0
