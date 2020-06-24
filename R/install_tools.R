@@ -144,6 +144,7 @@ install_tools=function(whitelist=NA,blacklist=NA){
   if(any(grepl("fastx_toolkit",names(urls)))){
     setwd("./fastx_toolkit")
     print("Compiling source code for: fastx_toolkit")
+    system("sed -i s/usage();/usage(); exit(0);/")
     system("./reconf")
     system(paste0("export PKG_CONFIG_PATH=",confg,"; ./configure --prefix=",getwd()))
     system("make")
