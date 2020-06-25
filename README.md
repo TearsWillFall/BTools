@@ -23,6 +23,7 @@ BTools simplifies the installation process of some commonly Bioinformatics tools
 Tested on fresh Ubuntu and Arch Linux installations. Should be working on other Linux distros too as long as equivalent packages are provided. 
 
 In order to be able to download and compile the source files of all the required tools the following programs are required:
+* git
 * make
 * gcc
 * ant **Only required if installing FastQC**
