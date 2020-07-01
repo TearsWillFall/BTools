@@ -77,7 +77,7 @@ install_tools=function(whitelist=NA,blacklist=NA){
 
   if(any(grepl("htslib",names(urls)))){
     setwd("./htslib")
-    print("Compiling source code for htslib")
+    print("Compiling source code for: htslib")
     system("autoheader")
     system("autoconf -Wno-syntax")
     system("./configure")
@@ -96,7 +96,7 @@ install_tools=function(whitelist=NA,blacklist=NA){
 
   if(any(grepl("samtools",names(urls)))){
     setwd("./samtools")
-    print("Compiling source code for: bedtools")
+    print("Compiling source code for: samtools")
     system("autoheader")
     system("autoconf -Wno-syntax")
     system("./configure")
