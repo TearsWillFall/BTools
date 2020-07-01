@@ -26,7 +26,7 @@ install_tools=function(whitelist=NA,blacklist=NA){
   ichorCNA="https://github.com/broadinstitute/ichorCNA.git",bedtools="https://github.com/arq5x/bedtools2.git",
   libgtextutils="https://github.com/agordon/libgtextutils.git",fastx_toolkit="https://github.com/agordon/fastx_toolkit.git")
 
-  if (any(grepl("bwa",whitelist))){
+  if (any(grepl("samtools",whitelist))){
     dependencies=append(dependencies,"htslib")
   }
 
