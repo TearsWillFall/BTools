@@ -24,7 +24,7 @@ install_tools=function(whitelist=NA,blacklist=NA){
   bwa="https://github.com/lh3/bwa.git",htslib="https://github.com/samtools/htslib.git",
   picard="https://github.com/broadinstitute/picard.git",hmmcopy_utils="https://github.com/shahcompbio/hmmcopy_utils.git",
   ichorCNA="https://github.com/broadinstitute/ichorCNA.git",bedtools="https://github.com/arq5x/bedtools2.git",
-  libgtextutils="https://github.com/agordon/libgtextutils.git",fastx_toolkit="https://github.com/agordon/fastx_toolkit.git")
+  libgtextutils="https://github.com/agordon/libgtextutils.git",fastx_toolkit="https://github.com/agordon/fastx_toolkit.git",bamUtil="https://github.com/statgen/bamUtil.git")
 
   if (any(grepl("samtools",whitelist))){
     dependencies=append(dependencies,"htslib")
@@ -150,6 +150,14 @@ install_tools=function(whitelist=NA,blacklist=NA){
     system("make")
     system("make install")
     setwd("..")
+  }
+
+  if(any(grepl("bamUtil",names(urls)))){
+    setwd("./bamUtil")
+    print("Compiling source code for: bamUtil")
+    system("make cloneLib")
+    system("make")
+    system(paste("make install INSTALLDIR=",getwd()))
   }
 
   setwd("..")
