@@ -157,7 +157,8 @@ install_tools=function(whitelist=NA,blacklist=NA){
     print("Compiling source code for: bamUtil")
     system("make cloneLib")
     system("make")
-    system(paste("make install INSTALLDIR=",getwd()))
+    system(paste0("make install INSTALLDIR=",getwd()))
+    setwd("..")
   }
 
   setwd("..")
