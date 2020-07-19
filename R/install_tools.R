@@ -166,6 +166,9 @@ install_tools=function(whitelist=NA,blacklist=NA){
     setwd("./sambamba")
     print("Compiling source code for: sambamba")
     system("make")
+    setwd("./bin")
+    system("find . -type f -not -name '*.o' -execdir mv {} sambamba ';'")
+    setwd("..")
     setwd("..")
   }
 
