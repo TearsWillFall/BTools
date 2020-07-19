@@ -30,7 +30,7 @@ In order to be able to download and compile the source files of all the required
 * cmake
 * autoconf
 * libtool **Only required if installing fastx_toolkit/libgtextutils**
-* lcd  **Only required if installing sambamba**
+* ldc  **Only required if installing sambamba**
 * lz4  **Only required if installing sambamba**
 
 These tools can and should be installed using the terminal with the following commands:
