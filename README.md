@@ -30,19 +30,21 @@ In order to be able to download and compile the source files of all the required
 * cmake
 * autoconf
 * libtool **Only required if installing fastx_toolkit/libgtextutils**
+* lcd  **Only required if installing sambamba**
+* lz4  **Only required if installing sambamba**
 
 These tools can and should be installed using the terminal with the following commands:
 
 * **For Ubuntu:**
 
   ```
-  sudo apt install git make gcc ant cmake autoconf libtool
+  sudo apt install git make gcc ant cmake autoconf libtool lcd liblz4 libz
   ```
 
 * **For Arch Linux:**
 
   ```
-  sudo pacman -S git ant make cmake gcc autoconf libtool
+  sudo pacman -S git ant make cmake gcc autoconf libtool lcd lz4
   ```
   
 Additional dependencies may be needed to succesfully install `devtools` package in R:
