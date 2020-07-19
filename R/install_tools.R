@@ -16,7 +16,7 @@ install_tools=function(whitelist=NA,blacklist=NA){
   dependencies=c()
   if (any(!is.na(whitelist)) & any(!is.na(blacklist))){
     print ("Whitelist and Blacklist arguments are self-excluding")
-    quit()
+    stop()
   }
 
   urls=list(FastQC="https://github.com/s-andrews/FastQC.git",
@@ -24,7 +24,7 @@ install_tools=function(whitelist=NA,blacklist=NA){
   bwa="https://github.com/lh3/bwa.git",htslib="https://github.com/samtools/htslib.git",
   picard="https://github.com/broadinstitute/picard.git",hmmcopy_utils="https://github.com/shahcompbio/hmmcopy_utils.git",
   ichorCNA="https://github.com/broadinstitute/ichorCNA.git",bedtools="https://github.com/arq5x/bedtools2.git",
-  libgtextutils="https://github.com/agordon/libgtextutils.git",fastx_toolkit="https://github.com/agordon/fastx_toolkit.git",bamUtil="https://github.com/statgen/bamUtil.git")
+  libgtextutils="https://github.com/agordon/libgtextutils.git",fastx_toolkit="https://github.com/agordon/fastx_toolkit.git",bamUtil="https://github.com/statgen/bamUtil.git",sambamba="git clone --recursive https://github.com/biod/sambamba.git")
 
   if (any(grepl("samtools",whitelist))){
     dependencies=append(dependencies,"htslib")
@@ -160,6 +160,14 @@ install_tools=function(whitelist=NA,blacklist=NA){
     system(paste0("make install INSTALLDIR=",getwd()))
     setwd("..")
   }
+
+  if(any(grepl("sambamba",names(urls)))){
+    setwd("./sambamba")
+    print("Compiling source code for: sambamba")
+    system("make")
+    setwd("..")
+  }
+
 
   setwd("..")
 }
