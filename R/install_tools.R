@@ -24,7 +24,8 @@ install_tools=function(whitelist=NA,blacklist=NA){
   bwa="https://github.com/lh3/bwa.git",htslib="https://github.com/samtools/htslib.git",
   picard="https://github.com/broadinstitute/picard.git",hmmcopy_utils="https://github.com/shahcompbio/hmmcopy_utils.git",
   ichorCNA="https://github.com/broadinstitute/ichorCNA.git",bedtools="https://github.com/arq5x/bedtools2.git",
-  libgtextutils="https://github.com/agordon/libgtextutils.git",fastx_toolkit="https://github.com/agordon/fastx_toolkit.git",bamUtil="https://github.com/statgen/bamUtil.git",sambamba="git clone --recursive https://github.com/biod/sambamba.git")
+  libgtextutils="https://github.com/agordon/libgtextutils.git",fastx_toolkit="https://github.com/agordon/fastx_toolkit.git",bamUtil="https://github.com/statgen/bamUtil.git",
+  sambamba="https://github.com/biod/sambamba.git")
 
   if (any(grepl("samtools",whitelist))){
     dependencies=append(dependencies,"htslib")
@@ -49,8 +50,8 @@ install_tools=function(whitelist=NA,blacklist=NA){
 
     f=function(y,x){
       print(paste("Fetching source code for:",y))
-      print(paste("git clone",x))
-      system(paste("git clone",x))
+      print(paste("git clone --recursive",x))
+      system(paste("git clone --recursive",x))
     }
     mapply(names(urls),urls,FUN=f )
 
