@@ -15,7 +15,7 @@ BTools simplifies the installation process of some commonly Bioinformatics tools
 * [picard](https://github.com/broadinstitute/picard): A set of command line tools (in Java) for manipulating high-throughput sequencing (HTS) data and formats such as SAM/BAM/CRAM and VCF
 * [hmmcopy_utils](https://github.com/shahcompbio/hmmcopy_utils): Tools for extracting read counts and gc and mappability statistics in preparation for running HMMCopy
 * [ichorCNA](https://github.com/broadinstitute/ichorCNA): Estimating tumor fraction in cell-free DNA from Ultra-Low-Pass Whole Genome Sequencing
-
+* [sambamba](https://github.com/biod/sambamba): Tools for working with SAM/BAM/CRAM data 
 
 ## 2. System Requirements
 
