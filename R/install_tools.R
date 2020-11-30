@@ -58,6 +58,7 @@ install_tools=function(whitelist=NA,blacklist=NA){
         system(paste("wget",x))
       }
     }
+  }
     mapply(names(urls),urls,FUN=f )
 
 
