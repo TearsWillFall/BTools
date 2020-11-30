@@ -27,7 +27,7 @@ install_tools=function(whitelist=NA,blacklist=NA){
   libgtextutils="https://github.com/agordon/libgtextutils.git",fastx_toolkit="https://github.com/agordon/fastx_toolkit.git",bamUtil="https://github.com/statgen/bamUtil.git",
   sambamba="https://github.com/biod/sambamba.git",gatk="https://github.com/broadinstitute/gatk.git",platypus="https://www.rdm.ox.ac.uk/resolveuid/599a7efc8ec04059a101c59714353209")
 
-  if (any(grepl("samtools",whitelist))){
+  if (any(grepl("samtools|platypus",whitelist))){
     dependencies=append(dependencies,"htslib")
   }
 
