@@ -188,8 +188,10 @@ install_tools=function(whitelist=NA,blacklist=NA){
 
   if(any(grepl("platypus",names(urls)))){
     files=list.files()
-    files=files[grepl("latypus",files)]
     system(paste0("tar xvf ",files))
+    system(paste0("rm ",files))
+    files=list.files()
+    files=files[grepl("latypus",files)]
     setwd(paste0("./",files))
     print("Compiling source code for: platypus")
     system("./buildPlatypus.sh")
