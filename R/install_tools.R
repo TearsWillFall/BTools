@@ -25,7 +25,7 @@ install_tools=function(whitelist=NA,blacklist=NA){
   picard="https://github.com/broadinstitute/picard.git",hmmcopy_utils="https://github.com/shahcompbio/hmmcopy_utils.git",
   ichorCNA="https://github.com/broadinstitute/ichorCNA.git",bedtools="https://github.com/arq5x/bedtools2.git",
   libgtextutils="https://github.com/agordon/libgtextutils.git",fastx_toolkit="https://github.com/agordon/fastx_toolkit.git",bamUtil="https://github.com/statgen/bamUtil.git",
-  sambamba="https://github.com/biod/sambamba.git",gatk="https://github.com/broadinstitute/gatk.git")
+  sambamba="https://github.com/biod/sambamba.git",gatk="https://github.com/broadinstitute/gatk.git",platypus="https://www.rdm.ox.ac.uk/resolveuid/599a7efc8ec04059a101c59714353209")
 
   if (any(grepl("samtools",whitelist))){
     dependencies=append(dependencies,"htslib")
@@ -50,8 +50,13 @@ install_tools=function(whitelist=NA,blacklist=NA){
 
     f=function(y,x){
       print(paste("Fetching source code for:",y))
-      print(paste("git clone --recursive",x))
-      system(paste("git clone --recursive",x))
+      if (y!="platypus"){
+        print(paste("git clone --recursive",x))
+        system(paste("git clone --recursive",x))
+      else{
+        print(paste("wget",x))
+        system(paste("wget",x))
+      }
     }
     mapply(names(urls),urls,FUN=f )
 
@@ -179,6 +184,18 @@ install_tools=function(whitelist=NA,blacklist=NA){
     system("./gradlew bundle")
     setwd("..")
   }
+
+  if(any(grepl("platypus",names(urls)))){
+    files=list.files()
+    files=files[grepl("latypus",files)]
+    system(paste0("tar xvf ",files))
+    setwd(paste0("./",files))
+    print("Compiling source code for: platypus")
+    system("./buildPlatypus.sh")
+    setwd("..")
+  }
+
+
 
   setwd("..")
 }
