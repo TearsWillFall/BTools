@@ -25,7 +25,7 @@ install_tools=function(whitelist=NA,blacklist=NA){
   picard="https://github.com/broadinstitute/picard.git",hmmcopy_utils="https://github.com/shahcompbio/hmmcopy_utils.git",
   ichorCNA="https://github.com/broadinstitute/ichorCNA.git",bedtools="https://github.com/arq5x/bedtools2.git",
   libgtextutils="https://github.com/agordon/libgtextutils.git",fastx_toolkit="https://github.com/agordon/fastx_toolkit.git",bamUtil="https://github.com/statgen/bamUtil.git",
-  sambamba="https://github.com/biod/sambamba.git")
+  sambamba="https://github.com/biod/sambamba.git",gatk="https://github.com/broadinstitute/gatk.git")
 
   if (any(grepl("samtools",whitelist))){
     dependencies=append(dependencies,"htslib")
@@ -169,6 +169,14 @@ install_tools=function(whitelist=NA,blacklist=NA){
     setwd("./bin")
     system("find . -type f -not -name '*.o' -execdir mv {} sambamba ';'")
     setwd("..")
+    setwd("..")
+  }
+
+  if(any(grepl("gatk",names(urls)))){
+    setwd("./gatk")
+    print("Compiling source code for: gatk")
+    system("git lfs pull --include src/main/resources/large")
+    system("./gradlew bundle")
     setwd("..")
   }
 
