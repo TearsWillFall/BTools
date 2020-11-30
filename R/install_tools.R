@@ -50,7 +50,7 @@ install_tools=function(whitelist=NA,blacklist=NA){
 
     f=function(y,x){
       print(paste("Fetching source code for:",y))
-      if (y!="platypus"){
+      if ("platypus"!=y){
         print(paste("git clone --recursive",x))
         system(paste("git clone --recursive",x))
       }
