@@ -52,14 +52,13 @@ install_tools=function(whitelist=NA,blacklist=NA){
       print(paste("Fetching source code for:",y))
       if (y!="platypus"){
         print(paste("git clone --recursive",x))
-        system(paste("git clone --recursive",x))
+        system(paste("git clone --recursive",x))}
       else{
         print(paste("wget",x))
         system(paste("wget",x))
       }
     }
-  }
-    mapply(names(urls),urls,FUN=f )
+    mapply(names(urls),urls,FUN=f)
 
 
   if(any(grepl("FastQC",names(urls)))){
