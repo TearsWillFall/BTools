@@ -181,22 +181,23 @@ install_tools=function(whitelist=NA,blacklist=NA){
   if(any(grepl("gatk",names(urls)))){
     setwd("./gatk")
     print("Compiling source code for: gatk")
-    system("git lfs pull --include src/main/resources/large")
+    system("git-lfs pull --include src/main/resources/large")
     system("./gradlew bundle")
     setwd("..")
   }
 
-  if(any(grepl("platypus",names(urls)))){
-    files=list.files()
-    system(paste0("tar xvf ",files))
-    system(paste0("rm ",files))
-    files=list.files()
-    files=files[grepl("latypus",files)]
-    setwd(paste0("./",files))
-    print("Compiling source code for: platypus")
-    system("./buildPlatypus.sh")
-    setwd("..")
-  }
+  ## Currently not working
+  # if(any(grepl("platypus",names(urls)))){
+  #   files=list.files()
+  #   system(paste0("tar xvf ",files))
+  #   system(paste0("rm ",files))
+  #   files=list.files()
+  #   files=files[grepl("latypus",files)]
+  #   setwd(paste0("./",files))
+  #   print("Compiling source code for: platypus")
+  #   system("./buildPlatypus.sh")
+  #   setwd("..")
+  # }
 
 
 
