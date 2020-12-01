@@ -25,7 +25,7 @@ install_tools=function(whitelist=NA,blacklist=NA){
   picard="https://github.com/broadinstitute/picard.git",hmmcopy_utils="https://github.com/shahcompbio/hmmcopy_utils.git",
   ichorCNA="https://github.com/broadinstitute/ichorCNA.git",bedtools="https://github.com/arq5x/bedtools2.git",
   libgtextutils="https://github.com/agordon/libgtextutils.git",fastx_toolkit="https://github.com/agordon/fastx_toolkit.git",bamUtil="https://github.com/statgen/bamUtil.git",
-  sambamba="https://github.com/biod/sambamba.git",gatk="https://github.com/broadinstitute/gatk.git",platypus="https://www.rdm.ox.ac.uk/resolveuid/599a7efc8ec04059a101c59714353209")
+  sambamba="https://github.com/biod/sambamba.git",gatk="https://github.com/broadinstitute/gatk.git",platypus="https://www.rdm.ox.ac.uk/resolveuid/599a7efc8ec04059a101c59714353209",VEP="https://github.com/Ensembl/ensembl-vep.git")
 
   if (any(grepl("samtools|platypus",whitelist))){
     dependencies=append(dependencies,"htslib")
@@ -86,9 +86,10 @@ install_tools=function(whitelist=NA,blacklist=NA){
     setwd("./htslib")
     print("Compiling source code for: htslib")
     system("autoheader")
-    system("autoconf -Wno-syntax")
+    system("autoconf")
     system("./configure")
     system("make")
+    system(paste("make install prefix=",getwd()))
     setwd("..")
   }
 
@@ -186,20 +187,25 @@ install_tools=function(whitelist=NA,blacklist=NA){
     setwd("..")
   }
 
-  ## Currently not working
-  # if(any(grepl("platypus",names(urls)))){
-  #   files=list.files()
-  #   system(paste0("tar xvf ",files))
-  #   system(paste0("rm ",files))
-  #   files=list.files()
-  #   files=files[grepl("latypus",files)]
-  #   setwd(paste0("./",files))
-  #   print("Compiling source code for: platypus")
-  #   system("./buildPlatypus.sh")
-  #   setwd("..")
-  # }
+  # Currently not working
+  if(any(grepl("platypus",names(urls)))){
+    files=list.files()
+    system(paste0("tar xvf ",files))
+    system(paste0("rm ",files))
+    files=list.files()
+    files=files[grepl("latypus",files)]
+    setwd(paste0("./",files))
+    print("Compiling source code for: platypus")
+    system("./buildPlatypus.sh")
+    setwd("..")
+  }
 
-
+  if(any(grepl("VEP",names(urls)))){
+    setwd("./ensembl-vep")
+    print("Compiling source code for: VEP")
+    system("perl INSTALL.pl")
+    setwd("..")
+  }
 
   setwd("..")
 }

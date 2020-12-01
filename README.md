@@ -33,6 +33,7 @@ In order to be able to download and compile the source files of all the required
 * libtool **Only required if installing fastx_toolkit/libgtextutils**
 * ldc  **Only required if installing sambamba**
 * lz4  **Only required if installing sambamba**
+* go   **Only required when installing gatk**
 * git lfs **Only required if installing gatk. When installed git lfs install needs to be run**
 
 These tools can and should be installed using the terminal with the following commands:
