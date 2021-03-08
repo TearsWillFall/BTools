@@ -25,9 +25,10 @@ install_tools=function(whitelist=NA,blacklist=NA){
   picard="https://github.com/broadinstitute/picard.git",hmmcopy_utils="https://github.com/shahcompbio/hmmcopy_utils.git",
   ichorCNA="https://github.com/broadinstitute/ichorCNA.git",bedtools="https://github.com/arq5x/bedtools2.git",
   libgtextutils="https://github.com/agordon/libgtextutils.git",fastx_toolkit="https://github.com/agordon/fastx_toolkit.git",bamUtil="https://github.com/statgen/bamUtil.git",
-  sambamba="https://github.com/biod/sambamba.git",gatk="https://github.com/broadinstitute/gatk.git",platypus="https://www.rdm.ox.ac.uk/resolveuid/599a7efc8ec04059a101c59714353209",VEP="https://github.com/Ensembl/ensembl-vep.git")
+  sambamba="https://github.com/biod/sambamba.git",gatk="https://github.com/broadinstitute/gatk.git",platypus="https://www.rdm.ox.ac.uk/resolveuid/599a7efc8ec04059a101c59714353209",VEP="https://github.com/Ensembl/ensembl-vep.git",
+  bcftools="https://github.com/samtools/bcftools.git",svaba="https://github.com/walaj/svaba.git")
 
-  if (any(grepl("samtools|platypus",whitelist))){
+  if (any(grepl("samtools|platypus|bcftools",whitelist))){
     dependencies=append(dependencies,"htslib")
   }
 
@@ -207,5 +208,20 @@ install_tools=function(whitelist=NA,blacklist=NA){
     setwd("..")
   }
 
+  if(any(grepl("bcftools",names(urls)))){
+    setwd("./bcftools")
+    print("Compiling source code for: bcftools")
+    system("autoheader && autoconf && ./configure --enable-libgsl --enable-perl-filters")
+    system("make")
+    setwd("..")
+  }
+
+  if(any(grepl("svaba",names(urls)))){
+    setwd("./svaba")
+    print("Compiling source code for: svaba")
+    system("./configure")
+    system("make")
+    setwd("..")
+  }
   setwd("..")
 }
